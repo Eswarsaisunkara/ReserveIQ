@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+/* ============================================
+   ReserveIQ - Premium Restaurant Theme
+   ============================================ */
+
+:root {
+  --primary-50: #fffbeb;
+  --primary-100: #fef3c7;
+  --primary-200: #fde68a;
+  --primary-300: #fcd34d;
+  --primary-400: #fbbf24;
+  --primary-500: #f59e0b;
+  --primary-600: #d97706;
+  --primary-700: #b45309;
+  --primary-800: #92400e;
+  --primary-900: #78350f;
+  --dark-900: #0f172a;
+  --dark-800: #1e293b;
+  --dark-700: #334155;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #fafaf9;
+  color: #1f2937;
+}
+
+h1, h2, h3, h4, h5, .font-display {
+  font-family: 'Playfair Display', 'Inter', serif;
+  letter-spacing: -0.02em;
+}
+
+/* Smooth selection color */
+::selection {
+  background: #fcd34d;
+  color: #78350f;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b45309;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background:
+    linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(120,53,15,0.92) 50%, rgba(124,45,18,0.96) 100%),
+    url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80') center/cover;
+  position: relative;
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(251,191,36,0.15), transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(217,119,6,0.2), transparent 50%);
+  pointer-events: none;
+}
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Restaurant card hover */
+.restaurant-card {
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid #f1f5f9;
+}
+.restaurant-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 40px -15px rgba(217, 119, 6, 0.25),
+    0 10px 20px -10px rgba(0, 0, 0, 0.1);
+  border-color: #fde68a;
+}
+
+.restaurant-card .MuiCardMedia-root {
+  transition: transform 0.5s ease;
+}
+.restaurant-card:hover .MuiCardMedia-root {
+  transform: scale(1.05);
+}
+
+.restaurant-card .card-media-wrapper {
+  overflow: hidden;
+}
+
+/* Button press animation */
+.MuiButton-root {
+  transition: all 0.2s ease !important;
+}
+.MuiButton-root:active {
+  transform: scale(0.97);
+}
+
+/* Shimmer animation for loading */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Pulse glow for pending status */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Custom chip styles */
+.MuiChip-root {
+  transition: all 0.2s ease;
+}
+
+/* Sidebar active item glow */
+.MuiListItemButton-root.active-nav {
+  background: linear-gradient(90deg, #fef3c7, #fef9c3) !important;
+  box-shadow: 0 2px 8px rgba(217,119,6,0.15);
+}
+
+/* Input field focus */
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #d97706 !important;
+}
+.MuiFormLabel-root.Mui-focused {
+  color: #d97706 !important;
+}
+
+/* Table hover effect */
+.MuiTableRow-root:hover {
+  background-color: #fffbeb !important;
+}
+
+/* Reservation card hover */
+.reservation-card {
+  transition: all 0.25s ease;
+  border-left: 4px solid transparent;
+}
+.reservation-card:hover {
+  transform: translateX(4px);
+}
+.reservation-card.status-PENDING { border-left-color: #f59e0b; }
+.reservation-card.status-CONFIRMED { border-left-color: #10b981; }
+.reservation-card.status-CANCELLED { border-left-color: #ef4444; }
+.reservation-card.status-REJECTED { border-left-color: #dc2626; }
+.reservation-card.status-COMPLETED { border-left-color: #6366f1; }
+
+/* Paper elevation enhancement */
+.MuiPaper-elevation2 {
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+}
+
+/* Gradient text utility */
+.text-gradient-amber {
+  background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Stat number ticker */
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  background: linear-gradient(135deg, #d97706, #78350f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
